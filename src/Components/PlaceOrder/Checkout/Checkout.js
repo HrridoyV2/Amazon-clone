@@ -1,8 +1,8 @@
 import React from 'react'
+import { useStateValue } from '../../../StateProvider';
+import CheckoutProduct from '../CheckoutProduct/CheckoutProduct';
+import Subtotal from '../Subtotal/Subtotal';
 import './Checkout.css'
-import CheckoutProduct from './CheckoutProduct';
-import { useStateValue } from './StateProvider';
-import Subtotal from './Subtotal';
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
     return (
