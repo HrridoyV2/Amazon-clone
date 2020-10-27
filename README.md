@@ -1,5 +1,9 @@
 # Ema-John-client
 ***
-## Used Technoloy: `React`, `React-router`, `Firebase`, `Bootstrap`, `Stripe`, `React-Form-Hook`, `Material-ui`, `React-responsive-carousel`, `React-currency-format`, `Moment`, `Axios`
+## Used Technoloy: `React`, `React-router`, `Firebase`, `Bootstrap`, `Stripe`, `React-Form-Hook`, `Material-ui`, `React-responsive-carousel`, `React-currency-format`, `Moment`, `Axios`, `CSS3`
 ### Features: 
-- Or minuses 
+- It's Good looking Responsive E-commerce site. 
+- Designing are made by React-responsive-carousel, Bootstrap, CSS3
+- People can easily Choose their Technological Prodcts, if need they can see Details about Products
+- Payment system are made by Stripe, so any people of any country can easily make payment
+- Ater Payment people can easily see their order any time with respective date
