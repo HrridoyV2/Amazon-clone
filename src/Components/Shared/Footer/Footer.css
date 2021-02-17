@@ -1,0 +1,14 @@
+.footer{
+    width: 1500px;
+    background-color: #0F1111;
+    height: 400px;
+}
+.top{
+    display: block;
+    padding: 15px 0;
+    line-height: 19px;
+    font-size: 13px;
+    background-color: #0F1111;
+    color: white;
+    text-align: center;
+}
