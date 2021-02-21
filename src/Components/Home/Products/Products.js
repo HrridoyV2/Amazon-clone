@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
+import { fetchProducts } from "../../../redux";
 import Product from '../Product/Product';
-function Products() {
-  const [products, setProducts] = useState();
-  const [allProducts, setAllProducts] = useState([]);
-  const loadData = () => {
-    fetch("https://limitless-hamlet-24521.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        return setProducts(data.slice(0, 15));
-      });
-  };
-  loadData();
-const Products = useSelector(state => console.log("products from redux",state))
+
+function Products({fetchProducts, userData}) {
+  
+  useEffect(() => {
+    fetchProducts()
+}, [fetchProducts])
+const products = useSelector(state => state.products.products);
+
 
 
   return (
@@ -43,4 +40,19 @@ const Products = useSelector(state => console.log("products from redux",state))
   );
 }
 
-export default Products;
+const mapStateToProps = state => {
+  return {
+      userData: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchProducts: () => dispatch(fetchProducts())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
+
+
+

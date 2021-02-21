@@ -5,7 +5,7 @@ const initialState = {
     products: [],
     error: ''
 }
-console.log(initialState,"initialState")
+
 
 export const productsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -31,4 +31,3 @@ export const productsReducer = (state = initialState, action) => {
             default: return state
     }
 }
-

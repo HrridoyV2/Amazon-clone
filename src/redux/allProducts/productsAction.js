@@ -8,7 +8,6 @@ export const fetchProducts = () => {
         .get('https://limitless-hamlet-24521.herokuapp.com/products')
         .then(response => {
             const products = response.data
-            console.log("response: ",response)
             dispatch(fetchProductsSuccess(products))
         })
         .catch(error => {
@@ -37,4 +36,3 @@ const fetchProductsFailure = error => {
         payload: error
     }
 }
-
