@@ -10,7 +10,7 @@ function Header() {
   // const [{basket, user},  dispatch] = useStateValue();
   const [loggedInUser, setLoggedInUser] = useState("");
 
-  const products = useSelector(state => state.basket.basket)
+  const products = useSelector((store) => store.basket.basket.slice(1, store.basket.basket.length))
   
      
   const handleAuthentication = () => {

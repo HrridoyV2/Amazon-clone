@@ -6,7 +6,7 @@ import { getBasketTotal } from '../../../redux/basket/basketReducer';
 import './Subtotal.css';
 function Subtotal() {
   const history = useHistory();
-  const products = useSelector(state => state.basket.basket)
+  const products = useSelector((store) => store.basket.basket.slice(1, store.basket.basket.length))
   
   
     return (

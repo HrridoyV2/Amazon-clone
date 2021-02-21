@@ -4,9 +4,17 @@ import CheckoutProduct from '../CheckoutProduct/CheckoutProduct';
 import Subtotal from '../Subtotal/Subtotal';
 import './Checkout.css';
 function Checkout() {
-  const data = useSelector((store) => store.basket.basket)
+  const data = useSelector((store) => store.basket.basket.slice(1, store.basket.basket.length))
 
 let basket = [...new Set(data)];
+
+// 
+// var uniqueCount = Array();
+//   uniqueCount = ["a","b","c","d","d","e","a","b","c","f","g","h","h","h","e","a"];
+// var count = {};
+// uniqueCount.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+// console.log("one tim",count);
+//
   
     return (
       <div className="checkout">

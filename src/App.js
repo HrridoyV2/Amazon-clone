@@ -21,9 +21,7 @@ const promise = loadStripe(
 function App() {
    const [loggedInUser, setLoggedInUser] = useState({});
   const [{ basket , user}, dispatch] = useStateValue();
-console.log('====================================');
-console.log(store);
-console.log('====================================');
+
   return (
     <Provider store={store}>
       <Router>

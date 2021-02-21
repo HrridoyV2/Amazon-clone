@@ -6,7 +6,7 @@ import "./Orders.css";
 function Orders() {
   const [{ user }, dispatch] = useStateValue();
   const email = user?.email;
-  console.log(email);
+  
   const [order, setOrder] = useState([]);
   useEffect(() => {
     fetch(
@@ -21,8 +21,8 @@ function Orders() {
     )
       .then((res) => res.json())
       .then((data) => setOrder(data));
-  }, []);
-  console.log(order);
+  }, [email]);
+  
   return (
     <div className="orders">
       <h1>Your Orders</h1>
