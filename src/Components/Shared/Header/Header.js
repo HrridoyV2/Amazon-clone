@@ -1,17 +1,18 @@
 import { Search, ShoppingBasket } from "@material-ui/icons";
-import { auth } from "../../Login/firebase";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import "./Header.css";
-import { useStateValue } from "../../../StateProvider";
 import logo from '../../../logo.png';
-import { UserContext } from "../../../App";
-import { useContext } from "react";
-function Header() {
-  const [{basket, user},  dispatch] = useStateValue();
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+import { auth } from "../../Login/firebase";
+import "./Header.css";
 
-  console.log(loggedInUser);
+function Header() {
+  // const [{basket, user},  dispatch] = useStateValue();
+  const [loggedInUser, setLoggedInUser] = useState("");
+
+  const products = useSelector(state => state.basket.basket)
+  
+     
   const handleAuthentication = () => {
     if(loggedInUser){
       auth.signOut();
@@ -31,7 +32,7 @@ function Header() {
         <Search className="header__searchIcon"></Search>
       </div>
       <div className="header__nav">
-        <Link to={!loggedInUser && "/login"}>
+        <Link to="/login">
           <div onClick={handleAuthentication} className="header__option">
             <span className="header__optionLineOne">
               Hello {loggedInUser.user?.email || "Guest"}
@@ -55,7 +56,7 @@ function Header() {
           <div className="header__optionBasket">
             <ShoppingBasket />
             <span className="header__optionLineTwo header__basketCount">
-              {basket?.length}
+              {products.length}
             </span>
           </div>
         </Link>

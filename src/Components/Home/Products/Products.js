@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { useSelector } from 'react-redux';
 import Product from '../Product/Product';
 function Products() {
   const [products, setProducts] = useState();
@@ -13,17 +13,19 @@ function Products() {
       });
   };
   loadData();
+const Products = useSelector(state => console.log("products from redux",state))
+
 
   return (
     <div className="row">
       {!products &&
         <>
-        <Loader
+        {/* <Loader
       type="Bars"
       color="#00BFFF"
       height={100}
       width={1350}
-    /><h4 className="alert-info ml-auto mr-auto">Loading products, Please wait a while</h4>
+    /> */}<h4 className="alert-info ml-auto mr-auto">Loading products, Please wait a while</h4>
     </>}
       {products?.map((pd) => (
         <div className="col-md-6 col-lg-4 d-block">

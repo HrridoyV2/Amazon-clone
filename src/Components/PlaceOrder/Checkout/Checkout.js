@@ -1,10 +1,13 @@
-import React from 'react'
-import { useStateValue } from '../../../StateProvider';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import CheckoutProduct from '../CheckoutProduct/CheckoutProduct';
 import Subtotal from '../Subtotal/Subtotal';
-import './Checkout.css'
+import './Checkout.css';
 function Checkout() {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const data = useSelector((store) => store.basket.basket)
+
+let basket = [...new Set(data)];
+  
     return (
       <div className="checkout">
         <div className="checkout__left">
@@ -14,7 +17,7 @@ function Checkout() {
             className="checkout__ad"
           />
           <div>
-            <h3>{user?.email}</h3>
+            {/* <h3>{user?.email}</h3> */}
             <h2 className="checkout__title">Your shopping Basket</h2>
             {basket.map(item => (
               <CheckoutProduct

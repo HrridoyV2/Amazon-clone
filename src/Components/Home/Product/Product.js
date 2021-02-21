@@ -1,22 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+// import {useStateValue} from "../../../StateProvider";
+import { addToBasket } from '../../../redux';
 import './Product.css';
-import {useStateValue} from "../../../StateProvider";
+function Product({ id, title, image, price, rating}) {
+  
+const dispatch = useDispatch();
+  const [items, setItems] = useState(null);
+  useEffect(() => {
+    
+    setItems({id, title, image, price, rating})
+    
+  }, [id, image, price, rating, title])
+  
 
-function Product({ id, title, image, price, rating }) {
-  const [{basket}, dispatch] = useStateValue()
-  const addToBasket = () => {
-     dispatch({
-       type: 'ADD_TO_BASKET',
-       item: {
-         id: id,
-         title: title,
-         image: image,
-         price:price,
-         rating: rating,
-       },
-     })
-  }
   return (
     <div className="product">
       <div className="product__info">
@@ -38,9 +36,10 @@ function Product({ id, title, image, price, rating }) {
         </div>
       </div>
       <img src={image} alt="" />
-      <button onClick={addToBasket}>Add to Basket</button>
+      <button onClick={() => dispatch(addToBasket(items))}>Add to Basket</button>
     </div>
   );
 }
 
-export default Product
+
+export default Product;

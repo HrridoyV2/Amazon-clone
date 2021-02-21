@@ -1,18 +1,18 @@
-import React, { createContext, useEffect, useState } from 'react';
-import "./App.css";
-import Header from './Components/Shared/Header/Header';
-import Home from './Components/Home/Home/Home'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import { auth } from './Components/Login/firebase';
-import { useStateValue } from './StateProvider';
-import Payment from './Components/Payment/Payment';
-import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import ProductDetails from './Components/ProductDetails/ProductDetails';
-import Checkout from './Components/PlaceOrder/Checkout/Checkout';
+import { loadStripe } from '@stripe/stripe-js';
+import React, { createContext, useState } from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import "./App.css";
+import Home from './Components/Home/Home/Home';
 import Login from './Components/Login/Login';
+import Payment from './Components/Payment/Payment';
+import Checkout from './Components/PlaceOrder/Checkout/Checkout';
+import ProductDetails from './Components/ProductDetails/ProductDetails';
+import Header from './Components/Shared/Header/Header';
 import Orders from './Components/ShowOrder/Orders/Orders';
-
+import store from './redux/store';
+import { useStateValue } from './StateProvider';
 export const UserContext = createContext();
 
 const promise = loadStripe(
@@ -21,9 +21,11 @@ const promise = loadStripe(
 function App() {
    const [loggedInUser, setLoggedInUser] = useState({});
   const [{ basket , user}, dispatch] = useStateValue();
-
+console.log('====================================');
+console.log(store);
+console.log('====================================');
   return (
-    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
+    <Provider store={store}>
       <Router>
         <Header />
 
@@ -50,7 +52,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </UserContext.Provider>
+    </Provider>
   );
 }
 
