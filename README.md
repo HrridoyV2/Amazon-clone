@@ -1,6 +1,6 @@
 ### [Live site link](https://fir-ba4c3.web.app/)
 
-## Used Technoloy: `React`, `React-router`,, `Material-UI`,  `React-redux`, `Firebase`, `Bootstrap`, `React-Form-hook`, `Fontawesome`
+## Used Technoloy: `React`, `React-router`,, `Material-UI`,  `React-redux`, `Firebase`, `Bootstrap`, `React-Form-hook`, `Fontawesome`, `StripeJs`
 
 ### [Creative-Agency-server-code](https://github.com/HrridoyV2/Ema-John-server)
 
